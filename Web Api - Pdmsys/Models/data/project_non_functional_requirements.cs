@@ -12,8 +12,13 @@ namespace Web_Api___Pdmsys.Models.data
     using System;
     using System.Collections.Generic;
     
-    public partial class Table
+    public partial class project_non_functional_requirements
     {
         public int Id { get; set; }
+        public string content { get; set; }
+        public int Project_FK { get; set; }
+        public string name { get; set; }
+    
+        public virtual Projects Projects { get; set; }
     }
 }

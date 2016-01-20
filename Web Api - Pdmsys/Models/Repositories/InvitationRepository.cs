@@ -25,12 +25,29 @@ namespace Web_Api___Pdmsys.Models.Repositories
             return false;
         }
 
-     /**   public IQueryable GetInvitations(int projectId)
+        public IQueryable GetInvitations(int projectId)
         {
             var query = from inv in db.invitations
                         where inv.Project_FK == projectId
-                        select inv;
+                        select new 
+                        {
+                            Id = inv.Id,
+                            type = inv.type,
+                            firstname = inv.firstname,
+                            lastname = inv.lastname,
+                            email = inv.email                            
+                        };
             return query.AsQueryable();
-        }**/
+        }
+
+        public void RemoveInvitationByEmail(string email)
+        {
+            var deleteInv = from inv in db.invitations
+                            where inv.email == email
+                            select inv;
+
+            db.invitations.Remove(deleteInv.FirstOrDefault<invitations>());
+            db.SaveChanges();
+        }
     }
 }

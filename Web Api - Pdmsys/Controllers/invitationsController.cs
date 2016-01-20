@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Web_Api___Pdmsys.Models.data;
+using Web_Api___Pdmsys.Models.helpers;
 using Web_Api___Pdmsys.Models.Interfaces;
 using Web_Api___Pdmsys.Models.Repositories;
 
@@ -22,12 +23,10 @@ namespace Web_Api___Pdmsys.Controllers
         private pdmsysEntities db = new pdmsysEntities();
         static readonly IInvitationRepository _repo = new InvitationRepository();
 
-      /** [HttpGet]
-        [Route("/{projectId}")]
-        public IQueryable GetProjectMembers(int projectId)
+        public IQueryable Getinvitations(int id)
         {
-            return null;
-        }**/
+            return _repo.GetInvitations(id);
+        }
 
         // POST: api/invitations
         [Route("createInvitation/{projectId}")]
@@ -49,22 +48,34 @@ namespace Web_Api___Pdmsys.Controllers
             return Request.CreateResponse(HttpStatusCode.BadRequest, creationFailedInvitations);
         }
 
-        // DELETE: api/invitations/5
-        [ResponseType(typeof(invitations))]
-        public async Task<IHttpActionResult> Deleteinvitations(int id)
+        [Route("addInvitationToProject/{projectId}")]
+        public async Task<IHttpActionResult> AddInvitationToProject(invitations invitations, int projectId)
         {
-            invitations invitations = await db.invitations.FindAsync(id);
-            if (invitations == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return BadRequest();
             }
-
-
-
-            db.invitations.Remove(invitations);
+            invitations.Project_FK = projectId;
+            invitations.urlcode = RandomString(20);
+            db.invitations.Add(invitations);
             await db.SaveChangesAsync();
 
             return Ok(invitations);
+        }
+
+        [HttpPost]
+        [Route("deleteInvitation/{projectId}")]
+        public IHttpActionResult RemoveInvitationByEmail(EmailSearchModel model, int projectId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _repo.RemoveInvitationByEmail(model.email);
+
+
+            return Ok();
         }
 
         public static string RandomString(int length)

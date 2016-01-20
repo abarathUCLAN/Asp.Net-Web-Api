@@ -41,7 +41,6 @@ namespace Web_Api___Pdmsys.Models.Repositories
                             acronym = p.acronym
                         };
             return query.AsQueryable();
-
         }
 
         public int GetProjectRightsByProjectId(int projectId)

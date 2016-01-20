@@ -4,24 +4,65 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5ff7c4454fa547a687a4530501f614a1" Name="Diagram1">
-        <EntityTypeShape EntityType="PdmsysModel.AspNetRoles" Width="1.5" PointX="0.5" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PdmsysModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PdmsysModel.AspNetUserLogins" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PdmsysModel.AspNetUsers" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PdmsysModel.invitations" Width="1.5" PointX="11.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PdmsysModel.Projects" Width="1.5" PointX="6.375" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PdmsysModel.Table" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PdmsysModel.User_Project_Rel" Width="1.5" PointX="5.625" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PdmsysModel.UserInfos" Width="1.5" PointX="0.5" PointY="7.875" IsExpanded="true" />
-        <AssociationConnector Association="PdmsysModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="PdmsysModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="PdmsysModel.FK_Projects_AspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="PdmsysModel.FK_User_Project_Rel_ToTable_ToAspNetUser" ManuallyRouted="false" />
-        <AssociationConnector Association="PdmsysModel.FK_UserInfos_ToTable_AspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="PdmsysModel.FK_User_Project_Rel_ToTable_Projects" ManuallyRouted="false" />
-        <AssociationConnector Association="PdmsysModel.AspNetUserRoles" ManuallyRouted="false" />
-        <AssociationConnector Association="PdmsysModel.FK_invitations_ToTable_projects" />
+      <Diagram DiagramId="e2cc0c33d2bd41148fa35c51a805c878" Name="Diagram1">
+        <EntityTypeShape EntityType="pdmsysModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.AspNetUsers" Width="1.5" PointX="3" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.invitations" Width="1.5" PointX="7.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_acceptance_protocols" Width="1.5" PointX="7.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_actual_states" Width="1.5" PointX="7.5" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_change_requests" Width="1.5" PointX="7.5" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_data" Width="1.5" PointX="7.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_descriptions" Width="1.5" PointX="7.5" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_effort_estimations" Width="1.5" PointX="7.5" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_functional_requirements" Width="1.5" PointX="7.5" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_implementations" Width="1.5" PointX="7.5" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_introductions" Width="1.5" PointX="7.5" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_manuals" Width="1.5" PointX="7.5" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_need_to_haves" Width="1.5" PointX="7.5" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_nice_to_haves" Width="1.5" PointX="7.5" PointY="43.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_non_functional_requirements" Width="1.5" PointX="7.5" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_presentations" Width="1.5" PointX="7.5" PointY="49" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_qualities" Width="1.5" PointX="7.5" PointY="52" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_reports" Width="1.5" PointX="7.5" PointY="54.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_results" Width="1.5" PointX="7.5" PointY="57.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_risks" Width="1.5" PointX="7.5" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_style_guides" Width="1.5" PointX="7.5" PointY="62.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_target_states" Width="1.5" PointX="7.5" PointY="65.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.project_uses" Width="1.5" PointX="7.5" PointY="67.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.Projects" Width="1.5" PointX="5.25" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.User_Project_Rel" Width="1.5" PointX="10.5" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pdmsysModel.UserInfos" Width="1.5" PointX="5.25" PointY="70.375" IsExpanded="true" />
+        <AssociationConnector Association="pdmsysModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_Projects_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_User_Project_Rel_ToTable_ToAspNetUser" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_UserInfos_ToTable_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_invitations_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_acceptance_protocols_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_actual_states_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_change_requests_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_data_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_descriptions_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_effort_estimations_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_functional_requirements_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_implementations_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_introductions_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_manuals_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_need_to_haves_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_nice_to_haves_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_non_functional_requirements_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_presentations_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_qualities_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_reports_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_results_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_risks_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_style_guides_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_target_states_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_project_uses_ToTable_projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.FK_User_Project_Rel_ToTable_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="pdmsysModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

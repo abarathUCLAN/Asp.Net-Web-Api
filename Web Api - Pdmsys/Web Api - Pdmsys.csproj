@@ -120,6 +120,10 @@
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
@@ -157,9 +161,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -185,16 +186,18 @@
       <DependentUpon>PdmsysModel.edmx</DependentUpon>
       <LastGenOutput>PdmsysModel.cs</LastGenOutput>
     </Content>
-    <Content Include="scripts\ai.0.15.0-build58334.js" />
-    <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\FinalizationController.cs" />
+    <Compile Include="Controllers\FunctionalSpecificationController.cs" />
     <Compile Include="Controllers\invitationsController.cs" />
+    <Compile Include="Controllers\PreliminaryStudyController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\RequirementSpecificationController.cs" />
     <Compile Include="Models\data\AspNetRoles.cs">
       <DependentUpon>PdmsysModel.tt</DependentUpon>
     </Compile>
@@ -228,7 +231,67 @@
     <Compile Include="Models\data\Projects.cs">
       <DependentUpon>PdmsysModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\data\Table.cs">
+    <Compile Include="Models\data\project_acceptance_protocols.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_actual_states.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_change_requests.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_data.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_descriptions.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_effort_estimations.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_functional_requirements.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_implementations.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_introductions.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_manuals.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_need_to_haves.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_nice_to_haves.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_non_functional_requirements.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_presentations.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_qualities.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_reports.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_results.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_risks.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_style_guides.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_target_states.cs">
+      <DependentUpon>PdmsysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\data\project_uses.cs">
       <DependentUpon>PdmsysModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\data\UserInfos.cs">
@@ -238,15 +301,24 @@
       <DependentUpon>PdmsysModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\helpers\AddMemberModel.cs" />
+    <Compile Include="Models\helpers\ContentModel.cs" />
     <Compile Include="Models\helpers\EmailSearchModel.cs" />
     <Compile Include="Models\helpers\MemberModel.cs" />
+    <Compile Include="Models\Interfaces\IFinalizationRepository.cs" />
+    <Compile Include="Models\Interfaces\IFunctionalSpecificationRepository.cs" />
     <Compile Include="Models\Interfaces\IInvitationRepository.cs" />
+    <Compile Include="Models\Interfaces\IPreliminaryStudyRepository.cs" />
+    <Compile Include="Models\Interfaces\IRequirementSpecificationRepository.cs" />
     <Compile Include="Models\Interfaces\IUserProjectRel.cs" />
     <Compile Include="Models\Interfaces\IUserRepository.cs" />
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\Interfaces\IProjectRepository.cs" />
+    <Compile Include="Models\Repositories\FinalizationRepository.cs" />
+    <Compile Include="Models\Repositories\FunctionalSpecificationRepository.cs" />
     <Compile Include="Models\Repositories\InvitationRepository.cs" />
+    <Compile Include="Models\Repositories\PreliminaryStudyRepository.cs" />
     <Compile Include="Models\Repositories\ProjectRepository.cs" />
+    <Compile Include="Models\Repositories\RequirementSpecificationRepository.cs" />
     <Compile Include="Models\Repositories\UserProjectRel.cs" />
     <Compile Include="PdmsysContext.cs" />
     <Compile Include="AuthRepository.cs" />

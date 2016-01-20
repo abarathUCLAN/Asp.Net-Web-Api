@@ -17,8 +17,29 @@ namespace Web_Api___Pdmsys.Models.data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Projects()
         {
-            this.User_Project_Rel = new HashSet<User_Project_Rel>();
             this.invitations = new HashSet<invitations>();
+            this.project_acceptance_protocols = new HashSet<project_acceptance_protocols>();
+            this.project_actual_states = new HashSet<project_actual_states>();
+            this.project_change_requests = new HashSet<project_change_requests>();
+            this.project_data = new HashSet<project_data>();
+            this.project_descriptions = new HashSet<project_descriptions>();
+            this.project_effort_estimations = new HashSet<project_effort_estimations>();
+            this.project_functional_requirements = new HashSet<project_functional_requirements>();
+            this.project_implementations = new HashSet<project_implementations>();
+            this.project_introductions = new HashSet<project_introductions>();
+            this.project_manuals = new HashSet<project_manuals>();
+            this.project_need_to_haves = new HashSet<project_need_to_haves>();
+            this.project_nice_to_haves = new HashSet<project_nice_to_haves>();
+            this.project_non_functional_requirements = new HashSet<project_non_functional_requirements>();
+            this.project_presentations = new HashSet<project_presentations>();
+            this.project_qualities = new HashSet<project_qualities>();
+            this.project_reports = new HashSet<project_reports>();
+            this.project_results = new HashSet<project_results>();
+            this.project_risks = new HashSet<project_risks>();
+            this.project_style_guides = new HashSet<project_style_guides>();
+            this.project_target_states = new HashSet<project_target_states>();
+            this.project_uses = new HashSet<project_uses>();
+            this.User_Project_Rel = new HashSet<User_Project_Rel>();
         }
     
         public int Id { get; set; }
@@ -29,8 +50,50 @@ namespace Web_Api___Pdmsys.Models.data
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Project_Rel> User_Project_Rel { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<invitations> invitations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_acceptance_protocols> project_acceptance_protocols { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_actual_states> project_actual_states { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_change_requests> project_change_requests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_data> project_data { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_descriptions> project_descriptions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_effort_estimations> project_effort_estimations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_functional_requirements> project_functional_requirements { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_implementations> project_implementations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_introductions> project_introductions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_manuals> project_manuals { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_need_to_haves> project_need_to_haves { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_nice_to_haves> project_nice_to_haves { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_non_functional_requirements> project_non_functional_requirements { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_presentations> project_presentations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_qualities> project_qualities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_reports> project_reports { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_results> project_results { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_risks> project_risks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_style_guides> project_style_guides { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_target_states> project_target_states { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<project_uses> project_uses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_Project_Rel> User_Project_Rel { get; set; }
     }
 }

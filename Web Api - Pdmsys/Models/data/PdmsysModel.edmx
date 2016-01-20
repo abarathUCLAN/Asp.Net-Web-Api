@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PdmsysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="pdmsysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -68,6 +68,188 @@
           <Property Name="urlcode" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Project_FK" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="project_acceptance_protocols">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="criteria" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+          <Property Name="criteriaName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fulfilled" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="note" Type="text" />
+          <Property Name="requirement" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_actual_states">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_change_requests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_data">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_descriptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="text" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_effort_estimations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_functional_requirements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_implementations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_introductions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_manuals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_need_to_haves">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_nice_to_haves">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_non_functional_requirements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_presentations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="file" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_qualities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_reports">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+          <Property Name="month" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_results">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_risks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_style_guides">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_target_states">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_uses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="Project_FK" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Projects">
           <Key>
             <PropertyRef Name="Id" />
@@ -77,12 +259,6 @@
           <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="acronym" Type="nvarchar" MaxLength="50" />
           <Property Name="Project_FK" Type="nvarchar" MaxLength="128" />
-        </EntityType>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User_Project_Rel">
           <Key>
@@ -170,6 +346,258 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_project_acceptance_protocols_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_acceptance_protocols" Type="Self.project_acceptance_protocols" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_acceptance_protocols">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_actual_states_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_actual_states" Type="Self.project_actual_states" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_actual_states">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_change_requests_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_change_requests" Type="Self.project_change_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_change_requests">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_data_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_data" Type="Self.project_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_data">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_descriptions_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_descriptions" Type="Self.project_descriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_descriptions">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_effort_estimations_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_effort_estimations" Type="Self.project_effort_estimations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_effort_estimations">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_functional_requirements_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_functional_requirements" Type="Self.project_functional_requirements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_functional_requirements">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_implementations_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_implementations" Type="Self.project_implementations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_implementations">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_introductions_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_introductions" Type="Self.project_introductions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_introductions">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_manuals_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_manuals" Type="Self.project_manuals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_manuals">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_need_to_haves_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_need_to_haves" Type="Self.project_need_to_haves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_need_to_haves">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_nice_to_haves_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_nice_to_haves" Type="Self.project_nice_to_haves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_nice_to_haves">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_non_functional_requirements_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_non_functional_requirements" Type="Self.project_non_functional_requirements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_non_functional_requirements">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_presentations_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_presentations" Type="Self.project_presentations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_presentations">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_qualities_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_qualities" Type="Self.project_qualities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_qualities">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_reports_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_reports" Type="Self.project_reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_reports">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_results_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_results" Type="Self.project_results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_results">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risks_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_risks" Type="Self.project_risks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_risks">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_style_guides_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_style_guides" Type="Self.project_style_guides" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_style_guides">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_target_states_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_target_states" Type="Self.project_target_states" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_target_states">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_uses_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_uses" Type="Self.project_uses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_uses">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Projects_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
@@ -218,15 +646,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PdmsysModelStoreContainer">
+        <EntityContainer Name="pdmsysModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="invitations" EntityType="Self.invitations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_acceptance_protocols" EntityType="Self.project_acceptance_protocols" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_actual_states" EntityType="Self.project_actual_states" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_change_requests" EntityType="Self.project_change_requests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_data" EntityType="Self.project_data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_descriptions" EntityType="Self.project_descriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_effort_estimations" EntityType="Self.project_effort_estimations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_functional_requirements" EntityType="Self.project_functional_requirements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_implementations" EntityType="Self.project_implementations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_introductions" EntityType="Self.project_introductions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_manuals" EntityType="Self.project_manuals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_need_to_haves" EntityType="Self.project_need_to_haves" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_nice_to_haves" EntityType="Self.project_nice_to_haves" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_non_functional_requirements" EntityType="Self.project_non_functional_requirements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_presentations" EntityType="Self.project_presentations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_qualities" EntityType="Self.project_qualities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_reports" EntityType="Self.project_reports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_results" EntityType="Self.project_results" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_risks" EntityType="Self.project_risks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_style_guides" EntityType="Self.project_style_guides" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_target_states" EntityType="Self.project_target_states" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_uses" EntityType="Self.project_uses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User_Project_Rel" EntityType="Self.User_Project_Rel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfos" EntityType="Self.UserInfos" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -249,6 +697,90 @@
             <End Role="Projects" EntitySet="Projects" />
             <End Role="invitations" EntitySet="invitations" />
           </AssociationSet>
+          <AssociationSet Name="FK_project_acceptance_protocols_ToTable_projects" Association="Self.FK_project_acceptance_protocols_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_acceptance_protocols" EntitySet="project_acceptance_protocols" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_actual_states_ToTable_projects" Association="Self.FK_project_actual_states_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_actual_states" EntitySet="project_actual_states" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_change_requests_ToTable_projects" Association="Self.FK_project_change_requests_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_change_requests" EntitySet="project_change_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_data_ToTable_projects" Association="Self.FK_project_data_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_data" EntitySet="project_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_descriptions_ToTable_projects" Association="Self.FK_project_descriptions_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_descriptions" EntitySet="project_descriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_effort_estimations_ToTable_projects" Association="Self.FK_project_effort_estimations_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_effort_estimations" EntitySet="project_effort_estimations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_functional_requirements_ToTable_projects" Association="Self.FK_project_functional_requirements_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_functional_requirements" EntitySet="project_functional_requirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_implementations_ToTable_projects" Association="Self.FK_project_implementations_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_implementations" EntitySet="project_implementations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_introductions_ToTable_projects" Association="Self.FK_project_introductions_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_introductions" EntitySet="project_introductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_manuals_ToTable_projects" Association="Self.FK_project_manuals_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_manuals" EntitySet="project_manuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_need_to_haves_ToTable_projects" Association="Self.FK_project_need_to_haves_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_need_to_haves" EntitySet="project_need_to_haves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_nice_to_haves_ToTable_projects" Association="Self.FK_project_nice_to_haves_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_nice_to_haves" EntitySet="project_nice_to_haves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_non_functional_requirements_ToTable_projects" Association="Self.FK_project_non_functional_requirements_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_non_functional_requirements" EntitySet="project_non_functional_requirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_presentations_ToTable_projects" Association="Self.FK_project_presentations_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_presentations" EntitySet="project_presentations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_qualities_ToTable_projects" Association="Self.FK_project_qualities_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_qualities" EntitySet="project_qualities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_reports_ToTable_projects" Association="Self.FK_project_reports_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_reports" EntitySet="project_reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_results_ToTable_projects" Association="Self.FK_project_results_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_results" EntitySet="project_results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risks_ToTable_projects" Association="Self.FK_project_risks_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_risks" EntitySet="project_risks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_style_guides_ToTable_projects" Association="Self.FK_project_style_guides_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_style_guides" EntitySet="project_style_guides" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_target_states_ToTable_projects" Association="Self.FK_project_target_states_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_target_states" EntitySet="project_target_states" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_uses_ToTable_projects" Association="Self.FK_project_uses_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_uses" EntitySet="project_uses" />
+          </AssociationSet>
           <AssociationSet Name="FK_Projects_AspNetUsers" Association="Self.FK_Projects_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Projects" EntitySet="Projects" />
@@ -266,10 +798,11 @@
             <End Role="UserInfos" EntitySet="UserInfos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="PdmsysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="pdmsysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -333,7 +866,210 @@
           <Property Name="type" Type="Int32" Nullable="false" />
           <Property Name="urlcode" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Project_FK" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Projects" Relationship="PdmsysModel.FK_invitations_ToTable_projects" FromRole="invitations" ToRole="Projects" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_invitations_ToTable_projects" FromRole="invitations" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_acceptance_protocols">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="criteria" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <Property Name="criteriaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fulfilled" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="requirement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_acceptance_protocols_ToTable_projects" FromRole="project_acceptance_protocols" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_actual_states">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_actual_states_ToTable_projects" FromRole="project_actual_states" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_change_requests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_change_requests_ToTable_projects" FromRole="project_change_requests" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_data">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_data_ToTable_projects" FromRole="project_data" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_descriptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_descriptions_ToTable_projects" FromRole="project_descriptions" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_effort_estimations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_effort_estimations_ToTable_projects" FromRole="project_effort_estimations" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_functional_requirements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_functional_requirements_ToTable_projects" FromRole="project_functional_requirements" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_implementations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_implementations_ToTable_projects" FromRole="project_implementations" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_introductions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_introductions_ToTable_projects" FromRole="project_introductions" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_manuals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_manuals_ToTable_projects" FromRole="project_manuals" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_need_to_haves">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_need_to_haves_ToTable_projects" FromRole="project_need_to_haves" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_nice_to_haves">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_nice_to_haves_ToTable_projects" FromRole="project_nice_to_haves" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_non_functional_requirements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_non_functional_requirements_ToTable_projects" FromRole="project_non_functional_requirements" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_presentations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="file" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_presentations_ToTable_projects" FromRole="project_presentations" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_qualities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_qualities_ToTable_projects" FromRole="project_qualities" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_reports">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <Property Name="month" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_reports_ToTable_projects" FromRole="project_reports" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_results">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_results_ToTable_projects" FromRole="project_results" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_risks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_risks_ToTable_projects" FromRole="project_risks" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_style_guides">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_style_guides_ToTable_projects" FromRole="project_style_guides" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_target_states">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_target_states_ToTable_projects" FromRole="project_target_states" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="project_uses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_project_uses_ToTable_projects" FromRole="project_uses" ToRole="Projects" />
         </EntityType>
         <EntityType Name="Projects">
           <Key>
@@ -345,14 +1081,29 @@
           <Property Name="acronym" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Project_FK" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Projects_AspNetUsers" FromRole="Projects" ToRole="AspNetUsers" />
+          <NavigationProperty Name="invitations" Relationship="Self.FK_invitations_ToTable_projects" FromRole="Projects" ToRole="invitations" />
+          <NavigationProperty Name="project_acceptance_protocols" Relationship="Self.FK_project_acceptance_protocols_ToTable_projects" FromRole="Projects" ToRole="project_acceptance_protocols" />
+          <NavigationProperty Name="project_actual_states" Relationship="Self.FK_project_actual_states_ToTable_projects" FromRole="Projects" ToRole="project_actual_states" />
+          <NavigationProperty Name="project_change_requests" Relationship="Self.FK_project_change_requests_ToTable_projects" FromRole="Projects" ToRole="project_change_requests" />
+          <NavigationProperty Name="project_data" Relationship="Self.FK_project_data_ToTable_projects" FromRole="Projects" ToRole="project_data" />
+          <NavigationProperty Name="project_descriptions" Relationship="Self.FK_project_descriptions_ToTable_projects" FromRole="Projects" ToRole="project_descriptions" />
+          <NavigationProperty Name="project_effort_estimations" Relationship="Self.FK_project_effort_estimations_ToTable_projects" FromRole="Projects" ToRole="project_effort_estimations" />
+          <NavigationProperty Name="project_functional_requirements" Relationship="Self.FK_project_functional_requirements_ToTable_projects" FromRole="Projects" ToRole="project_functional_requirements" />
+          <NavigationProperty Name="project_implementations" Relationship="Self.FK_project_implementations_ToTable_projects" FromRole="Projects" ToRole="project_implementations" />
+          <NavigationProperty Name="project_introductions" Relationship="Self.FK_project_introductions_ToTable_projects" FromRole="Projects" ToRole="project_introductions" />
+          <NavigationProperty Name="project_manuals" Relationship="Self.FK_project_manuals_ToTable_projects" FromRole="Projects" ToRole="project_manuals" />
+          <NavigationProperty Name="project_need_to_haves" Relationship="Self.FK_project_need_to_haves_ToTable_projects" FromRole="Projects" ToRole="project_need_to_haves" />
+          <NavigationProperty Name="project_nice_to_haves" Relationship="Self.FK_project_nice_to_haves_ToTable_projects" FromRole="Projects" ToRole="project_nice_to_haves" />
+          <NavigationProperty Name="project_non_functional_requirements" Relationship="Self.FK_project_non_functional_requirements_ToTable_projects" FromRole="Projects" ToRole="project_non_functional_requirements" />
+          <NavigationProperty Name="project_presentations" Relationship="Self.FK_project_presentations_ToTable_projects" FromRole="Projects" ToRole="project_presentations" />
+          <NavigationProperty Name="project_qualities" Relationship="Self.FK_project_qualities_ToTable_projects" FromRole="Projects" ToRole="project_qualities" />
+          <NavigationProperty Name="project_reports" Relationship="Self.FK_project_reports_ToTable_projects" FromRole="Projects" ToRole="project_reports" />
+          <NavigationProperty Name="project_results" Relationship="Self.FK_project_results_ToTable_projects" FromRole="Projects" ToRole="project_results" />
+          <NavigationProperty Name="project_risks" Relationship="Self.FK_project_risks_ToTable_projects" FromRole="Projects" ToRole="project_risks" />
+          <NavigationProperty Name="project_style_guides" Relationship="Self.FK_project_style_guides_ToTable_projects" FromRole="Projects" ToRole="project_style_guides" />
+          <NavigationProperty Name="project_target_states" Relationship="Self.FK_project_target_states_ToTable_projects" FromRole="Projects" ToRole="project_target_states" />
+          <NavigationProperty Name="project_uses" Relationship="Self.FK_project_uses_ToTable_projects" FromRole="Projects" ToRole="project_uses" />
           <NavigationProperty Name="User_Project_Rel" Relationship="Self.FK_User_Project_Rel_ToTable_Projects" FromRole="Projects" ToRole="User_Project_Rel" />
-          <NavigationProperty Name="invitations" Relationship="PdmsysModel.FK_invitations_ToTable_projects" FromRole="Projects" ToRole="invitations" />
-        </EntityType>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="User_Project_Rel">
           <Key>
@@ -439,6 +1190,270 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_invitations_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="invitations" Type="Self.invitations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="invitations">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_acceptance_protocols_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_acceptance_protocols" Type="Self.project_acceptance_protocols" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_acceptance_protocols">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_actual_states_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_actual_states" Type="Self.project_actual_states" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_actual_states">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_change_requests_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_change_requests" Type="Self.project_change_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_change_requests">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_data_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_data" Type="Self.project_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_data">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_descriptions_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_descriptions" Type="Self.project_descriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_descriptions">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_effort_estimations_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_effort_estimations" Type="Self.project_effort_estimations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_effort_estimations">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_functional_requirements_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_functional_requirements" Type="Self.project_functional_requirements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_functional_requirements">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_implementations_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_implementations" Type="Self.project_implementations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_implementations">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_introductions_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_introductions" Type="Self.project_introductions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_introductions">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_manuals_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_manuals" Type="Self.project_manuals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_manuals">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_need_to_haves_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_need_to_haves" Type="Self.project_need_to_haves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_need_to_haves">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_nice_to_haves_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_nice_to_haves" Type="Self.project_nice_to_haves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_nice_to_haves">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_non_functional_requirements_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_non_functional_requirements" Type="Self.project_non_functional_requirements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_non_functional_requirements">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_presentations_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_presentations" Type="Self.project_presentations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_presentations">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_qualities_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_qualities" Type="Self.project_qualities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_qualities">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_reports_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_reports" Type="Self.project_reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_reports">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_results_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_results" Type="Self.project_results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_results">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risks_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_risks" Type="Self.project_risks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_risks">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_style_guides_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_style_guides" Type="Self.project_style_guides" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_style_guides">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_target_states_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_target_states" Type="Self.project_target_states" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_target_states">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_uses_ToTable_projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="project_uses" Type="Self.project_uses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project_uses">
+              <PropertyRef Name="Project_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Project_Rel_ToTable_Projects">
           <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
           <End Role="User_Project_Rel" Type="Self.User_Project_Rel" Multiplicity="*" />
@@ -455,14 +1470,34 @@
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="pdmsysEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="invitations" EntityType="Self.invitations" />
+          <EntitySet Name="project_acceptance_protocols" EntityType="Self.project_acceptance_protocols" />
+          <EntitySet Name="project_actual_states" EntityType="Self.project_actual_states" />
+          <EntitySet Name="project_change_requests" EntityType="Self.project_change_requests" />
+          <EntitySet Name="project_data" EntityType="Self.project_data" />
+          <EntitySet Name="project_descriptions" EntityType="Self.project_descriptions" />
+          <EntitySet Name="project_effort_estimations" EntityType="Self.project_effort_estimations" />
+          <EntitySet Name="project_functional_requirements" EntityType="Self.project_functional_requirements" />
+          <EntitySet Name="project_implementations" EntityType="Self.project_implementations" />
+          <EntitySet Name="project_introductions" EntityType="Self.project_introductions" />
+          <EntitySet Name="project_manuals" EntityType="Self.project_manuals" />
+          <EntitySet Name="project_need_to_haves" EntityType="Self.project_need_to_haves" />
+          <EntitySet Name="project_nice_to_haves" EntityType="Self.project_nice_to_haves" />
+          <EntitySet Name="project_non_functional_requirements" EntityType="Self.project_non_functional_requirements" />
+          <EntitySet Name="project_presentations" EntityType="Self.project_presentations" />
+          <EntitySet Name="project_qualities" EntityType="Self.project_qualities" />
+          <EntitySet Name="project_reports" EntityType="Self.project_reports" />
+          <EntitySet Name="project_results" EntityType="Self.project_results" />
+          <EntitySet Name="project_risks" EntityType="Self.project_risks" />
+          <EntitySet Name="project_style_guides" EntityType="Self.project_style_guides" />
+          <EntitySet Name="project_target_states" EntityType="Self.project_target_states" />
+          <EntitySet Name="project_uses" EntityType="Self.project_uses" />
           <EntitySet Name="Projects" EntityType="Self.Projects" />
-          <EntitySet Name="Table" EntityType="Self.Table" />
           <EntitySet Name="User_Project_Rel" EntityType="Self.User_Project_Rel" />
           <EntitySet Name="UserInfos" EntityType="Self.UserInfos" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -485,6 +1520,94 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="UserInfos" EntitySet="UserInfos" />
           </AssociationSet>
+          <AssociationSet Name="FK_invitations_ToTable_projects" Association="Self.FK_invitations_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="invitations" EntitySet="invitations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_acceptance_protocols_ToTable_projects" Association="Self.FK_project_acceptance_protocols_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_acceptance_protocols" EntitySet="project_acceptance_protocols" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_actual_states_ToTable_projects" Association="Self.FK_project_actual_states_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_actual_states" EntitySet="project_actual_states" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_change_requests_ToTable_projects" Association="Self.FK_project_change_requests_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_change_requests" EntitySet="project_change_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_data_ToTable_projects" Association="Self.FK_project_data_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_data" EntitySet="project_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_descriptions_ToTable_projects" Association="Self.FK_project_descriptions_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_descriptions" EntitySet="project_descriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_effort_estimations_ToTable_projects" Association="Self.FK_project_effort_estimations_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_effort_estimations" EntitySet="project_effort_estimations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_functional_requirements_ToTable_projects" Association="Self.FK_project_functional_requirements_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_functional_requirements" EntitySet="project_functional_requirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_implementations_ToTable_projects" Association="Self.FK_project_implementations_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_implementations" EntitySet="project_implementations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_introductions_ToTable_projects" Association="Self.FK_project_introductions_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_introductions" EntitySet="project_introductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_manuals_ToTable_projects" Association="Self.FK_project_manuals_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_manuals" EntitySet="project_manuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_need_to_haves_ToTable_projects" Association="Self.FK_project_need_to_haves_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_need_to_haves" EntitySet="project_need_to_haves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_nice_to_haves_ToTable_projects" Association="Self.FK_project_nice_to_haves_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_nice_to_haves" EntitySet="project_nice_to_haves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_non_functional_requirements_ToTable_projects" Association="Self.FK_project_non_functional_requirements_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_non_functional_requirements" EntitySet="project_non_functional_requirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_presentations_ToTable_projects" Association="Self.FK_project_presentations_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_presentations" EntitySet="project_presentations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_qualities_ToTable_projects" Association="Self.FK_project_qualities_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_qualities" EntitySet="project_qualities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_reports_ToTable_projects" Association="Self.FK_project_reports_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_reports" EntitySet="project_reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_results_ToTable_projects" Association="Self.FK_project_results_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_results" EntitySet="project_results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risks_ToTable_projects" Association="Self.FK_project_risks_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_risks" EntitySet="project_risks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_style_guides_ToTable_projects" Association="Self.FK_project_style_guides_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_style_guides" EntitySet="project_style_guides" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_target_states_ToTable_projects" Association="Self.FK_project_target_states_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_target_states" EntitySet="project_target_states" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_uses_ToTable_projects" Association="Self.FK_project_uses_ToTable_projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="project_uses" EntitySet="project_uses" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Project_Rel_ToTable_Projects" Association="Self.FK_User_Project_Rel_ToTable_Projects">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="User_Project_Rel" EntitySet="User_Project_Rel" />
@@ -493,31 +1616,15 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <AssociationSet Name="FK_invitations_ToTable_projects" Association="PdmsysModel.FK_invitations_ToTable_projects">
-            <End Role="Projects" EntitySet="Projects" />
-            <End Role="invitations" EntitySet="invitations" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_invitations_ToTable_projects">
-          <End Type="PdmsysModel.Projects" Role="Projects" Multiplicity="1" />
-          <End Type="PdmsysModel.invitations" Role="invitations" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Projects">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="invitations">
-              <PropertyRef Name="Project_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PdmsysModelStoreContainer" CdmEntityContainer="pdmsysEntities1">
+        <EntityContainerMapping StorageEntityContainer="pdmsysModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="PdmsysModel.AspNetRoles">
+            <EntityTypeMapping TypeName="pdmsysModel.AspNetRoles">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -525,7 +1632,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="PdmsysModel.AspNetUserClaims">
+            <EntityTypeMapping TypeName="pdmsysModel.AspNetUserClaims">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -535,7 +1642,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="PdmsysModel.AspNetUserLogins">
+            <EntityTypeMapping TypeName="pdmsysModel.AspNetUserLogins">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -544,7 +1651,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="PdmsysModel.AspNetUsers">
+            <EntityTypeMapping TypeName="pdmsysModel.AspNetUsers">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -562,20 +1669,223 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="invitations">
-            <EntityTypeMapping TypeName="PdmsysModel.invitations">
+            <EntityTypeMapping TypeName="pdmsysModel.invitations">
               <MappingFragment StoreEntitySet="invitations">
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="lastname" ColumnName="lastname" />
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="urlcode" ColumnName="urlcode" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_acceptance_protocols">
+            <EntityTypeMapping TypeName="pdmsysModel.project_acceptance_protocols">
+              <MappingFragment StoreEntitySet="project_acceptance_protocols">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="criteria" ColumnName="criteria" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+                <ScalarProperty Name="criteriaName" ColumnName="criteriaName" />
+                <ScalarProperty Name="fulfilled" ColumnName="fulfilled" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="requirement" ColumnName="requirement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_actual_states">
+            <EntityTypeMapping TypeName="pdmsysModel.project_actual_states">
+              <MappingFragment StoreEntitySet="project_actual_states">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_change_requests">
+            <EntityTypeMapping TypeName="pdmsysModel.project_change_requests">
+              <MappingFragment StoreEntitySet="project_change_requests">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_data">
+            <EntityTypeMapping TypeName="pdmsysModel.project_data">
+              <MappingFragment StoreEntitySet="project_data">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_descriptions">
+            <EntityTypeMapping TypeName="pdmsysModel.project_descriptions">
+              <MappingFragment StoreEntitySet="project_descriptions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_effort_estimations">
+            <EntityTypeMapping TypeName="pdmsysModel.project_effort_estimations">
+              <MappingFragment StoreEntitySet="project_effort_estimations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_functional_requirements">
+            <EntityTypeMapping TypeName="pdmsysModel.project_functional_requirements">
+              <MappingFragment StoreEntitySet="project_functional_requirements">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_implementations">
+            <EntityTypeMapping TypeName="pdmsysModel.project_implementations">
+              <MappingFragment StoreEntitySet="project_implementations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_introductions">
+            <EntityTypeMapping TypeName="pdmsysModel.project_introductions">
+              <MappingFragment StoreEntitySet="project_introductions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_manuals">
+            <EntityTypeMapping TypeName="pdmsysModel.project_manuals">
+              <MappingFragment StoreEntitySet="project_manuals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_need_to_haves">
+            <EntityTypeMapping TypeName="pdmsysModel.project_need_to_haves">
+              <MappingFragment StoreEntitySet="project_need_to_haves">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_nice_to_haves">
+            <EntityTypeMapping TypeName="pdmsysModel.project_nice_to_haves">
+              <MappingFragment StoreEntitySet="project_nice_to_haves">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_non_functional_requirements">
+            <EntityTypeMapping TypeName="pdmsysModel.project_non_functional_requirements">
+              <MappingFragment StoreEntitySet="project_non_functional_requirements">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_presentations">
+            <EntityTypeMapping TypeName="pdmsysModel.project_presentations">
+              <MappingFragment StoreEntitySet="project_presentations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="file" ColumnName="file" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_qualities">
+            <EntityTypeMapping TypeName="pdmsysModel.project_qualities">
+              <MappingFragment StoreEntitySet="project_qualities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_reports">
+            <EntityTypeMapping TypeName="pdmsysModel.project_reports">
+              <MappingFragment StoreEntitySet="project_reports">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+                <ScalarProperty Name="month" ColumnName="month" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_results">
+            <EntityTypeMapping TypeName="pdmsysModel.project_results">
+              <MappingFragment StoreEntitySet="project_results">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_risks">
+            <EntityTypeMapping TypeName="pdmsysModel.project_risks">
+              <MappingFragment StoreEntitySet="project_risks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_style_guides">
+            <EntityTypeMapping TypeName="pdmsysModel.project_style_guides">
+              <MappingFragment StoreEntitySet="project_style_guides">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_target_states">
+            <EntityTypeMapping TypeName="pdmsysModel.project_target_states">
+              <MappingFragment StoreEntitySet="project_target_states">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_uses">
+            <EntityTypeMapping TypeName="pdmsysModel.project_uses">
+              <MappingFragment StoreEntitySet="project_uses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Project_FK" ColumnName="Project_FK" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Projects">
-            <EntityTypeMapping TypeName="PdmsysModel.Projects">
+            <EntityTypeMapping TypeName="pdmsysModel.Projects">
               <MappingFragment StoreEntitySet="Projects">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -585,15 +1895,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Table">
-            <EntityTypeMapping TypeName="PdmsysModel.Table">
-              <MappingFragment StoreEntitySet="Table">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="User_Project_Rel">
-            <EntityTypeMapping TypeName="PdmsysModel.User_Project_Rel">
+            <EntityTypeMapping TypeName="pdmsysModel.User_Project_Rel">
               <MappingFragment StoreEntitySet="User_Project_Rel">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="User_FK" ColumnName="User_FK" />
@@ -603,7 +1906,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserInfos">
-            <EntityTypeMapping TypeName="PdmsysModel.UserInfos">
+            <EntityTypeMapping TypeName="pdmsysModel.UserInfos">
               <MappingFragment StoreEntitySet="UserInfos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
@@ -612,7 +1915,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="PdmsysModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="pdmsysModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
