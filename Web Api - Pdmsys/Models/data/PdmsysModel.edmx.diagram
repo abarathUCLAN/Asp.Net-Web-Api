@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ff7c4454fa547a687a4530501f614a1" Name="Diagram1">
+        <EntityTypeShape EntityType="PdmsysModel.AspNetRoles" Width="1.5" PointX="0.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PdmsysModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PdmsysModel.AspNetUserLogins" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PdmsysModel.AspNetUsers" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PdmsysModel.invitations" Width="1.5" PointX="11.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PdmsysModel.Projects" Width="1.5" PointX="6.375" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PdmsysModel.Table" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PdmsysModel.User_Project_Rel" Width="1.5" PointX="5.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PdmsysModel.UserInfos" Width="1.5" PointX="0.5" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="PdmsysModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="PdmsysModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="PdmsysModel.FK_Projects_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="PdmsysModel.FK_User_Project_Rel_ToTable_ToAspNetUser" ManuallyRouted="false" />
+        <AssociationConnector Association="PdmsysModel.FK_UserInfos_ToTable_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="PdmsysModel.FK_User_Project_Rel_ToTable_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="PdmsysModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="PdmsysModel.FK_invitations_ToTable_projects" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
