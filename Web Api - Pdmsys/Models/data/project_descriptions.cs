@@ -11,13 +11,13 @@ namespace Web_Api___Pdmsys.Models.data
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
+    
     public partial class project_descriptions
     {
         public int Id { get; set; }
-
         public string description { get; set; }
         public int Project_FK { get; set; }
+    
         public virtual Projects Projects { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using Web_Api___Pdmsys.Models;
@@ -25,7 +26,7 @@ namespace Web_Api___Pdmsys
             _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
         }
 
-        public async Task<IdentityResult> RegisterUser(RegisterModel userModel)
+        public async Task<IdentityUser> RegisterUser(RegisterModel userModel)
         {
             IdentityUser user = new IdentityUser
             {
@@ -34,15 +35,24 @@ namespace Web_Api___Pdmsys
            
             var result = await _userManager.CreateAsync(user, userModel.Password);
 
-            UserInfos info = new UserInfos();
-            info.firstname = userModel.Firstname;
-            info.lastname = userModel.Lastname;
-            info.User_FK = user.Id;
+            return user;
+        }
 
-            db.UserInfos.Add(info);
-            await db.SaveChangesAsync();
+        public object GetUserdata()
+        {
+            IdentityUser user = _userManager.FindByName(ClaimsPrincipal.Current.Claims.ToList().First().Value);
 
-            return result;
+            var query = from m in db.AspNetUsers
+                        join u in db.UserInfos
+                            on m.Id equals u.User_FK
+                        where m.Id == user.Id
+                        select new
+                        {
+                            firstname = u.firstname,
+                            lastname = u.lastname,
+                            email = m.UserName
+                        };
+            return query.First();                        
         }
 
         public async Task<IdentityUser> FindUser(string userName, string password)

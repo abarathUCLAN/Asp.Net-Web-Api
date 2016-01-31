@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -20,11 +21,26 @@ namespace Web_Api___Pdmsys.Controllers
     public class UserController : ApiController
     {
         private AuthRepository _repo = null;
+        pdmsysEntities db = new pdmsysEntities();
         static readonly IUserRepository _userrepo = new UserRepository();
 
         public UserController()
         {
             _repo = new AuthRepository();
+        }
+
+        [HttpGet]
+        [Route("changeData")]
+        public IHttpActionResult GetUser()
+        {
+            try
+            {
+                return Ok(_repo.GetUserdata());
+            }
+            catch (Exception e)
+            {
+                return Unauthorized();
+            }
         }
 
         // POST api/Account/Register
@@ -37,19 +53,48 @@ namespace Web_Api___Pdmsys.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await _repo.RegisterUser(userModel);
+            IdentityUser result = await _repo.RegisterUser(userModel);
 
-            IHttpActionResult errorResult = GetErrorResult(result);
+            if (result.Id == null)
+                return BadRequest();
 
-            if (errorResult != null)
-            {
-                return errorResult;
-            }
-
-            
+            UserInfos info = new UserInfos();
+            info.firstname = userModel.Firstname;
+            info.lastname = userModel.Lastname;
+            info.User_FK = result.Id;
+            await db.SaveChangesAsync();
+            db.UserInfos.Add(info);
+            await db.SaveChangesAsync();
 
             return Ok();
         }
+
+        [HttpPost]
+        [Route("changeData")]
+        public async Task<IHttpActionResult> ChangeUserData(UserdataChangeModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IdentityUser user = await _userrepo.Find();
+
+            UserInfos info = _userrepo.FindUserinfos(user.Id);
+
+
+            _userrepo.ChangeUserData(model, user);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("logout")]
+        public IHttpActionResult Logout()
+        {
+            return Ok();
+        }
+
 
         [HttpPost]
         [Route("getUserByEmail")]

@@ -30,13 +30,14 @@ namespace Web_Api___Pdmsys.Models.Repositories
         public IQueryable GetUsersProjects()
         {
             IdentityUser user = _userManager.FindByName(ClaimsPrincipal.Current.Claims.ToList().First().Value);
+
             var query = from rel in db.User_Project_Rel
                         join p in db.Projects on rel.Project_FK equals p.Id
                         where rel.User_FK == user.Id
                         select new
                         {
                             id = p.Id,
-                            name = p.name, 
+                            name = p.name,
                             description = p.description,
                             acronym = p.acronym
                         };
@@ -45,14 +46,21 @@ namespace Web_Api___Pdmsys.Models.Repositories
 
         public int GetProjectRightsByProjectId(int projectId)
         {
-            IdentityUser user = _userManager.FindByName(ClaimsPrincipal.Current.Claims.ToList().First().Value);
-            var query = from rel in db.User_Project_Rel
-                        where rel.User_FK == user.Id && rel.Project_FK == projectId                        
-                        select new
-                        {
-                            type = rel.type
-                        };
-            return query.ToList().First().type;
+            try
+            {
+                IdentityUser user = _userManager.FindByName(ClaimsPrincipal.Current.Claims.ToList().First().Value);
+                var query = from rel in db.User_Project_Rel
+                            where rel.User_FK == user.Id && rel.Project_FK == projectId
+                            select new
+                            {
+                                type = rel.type
+                            };
+                return query.ToList().First().type;
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
         }
 
         public IQueryable GetProjectMembersByProjectId(int projectId)

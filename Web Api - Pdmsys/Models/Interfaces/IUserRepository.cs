@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Web_Api___Pdmsys.Models.helpers;
+using Web_Api___Pdmsys.Models.data;
 
 namespace Web_Api___Pdmsys.Models.Interfaces
 {
@@ -14,5 +15,7 @@ namespace Web_Api___Pdmsys.Models.Interfaces
         Task<IdentityUser> Find();
         IEnumerable FindUserByUsername(EmailSearchModel email);
         Task<IdentityUser> FindUserByUsername(string userName);
+        UserInfos FindUserinfos(string userid);
+        void ChangeUserData(UserdataChangeModel model, IdentityUser user);
     }
 }

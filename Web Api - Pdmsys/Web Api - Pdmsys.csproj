@@ -195,6 +195,7 @@
     <Compile Include="Controllers\FinalizationController.cs" />
     <Compile Include="Controllers\FunctionalSpecificationController.cs" />
     <Compile Include="Controllers\invitationsController.cs" />
+    <Compile Include="Controllers\MiscellaneousController.cs" />
     <Compile Include="Controllers\PreliminaryStudyController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\RequirementSpecificationController.cs" />
@@ -304,9 +305,12 @@
     <Compile Include="Models\helpers\ContentModel.cs" />
     <Compile Include="Models\helpers\EmailSearchModel.cs" />
     <Compile Include="Models\helpers\MemberModel.cs" />
+    <Compile Include="Models\helpers\UploadModel.cs" />
+    <Compile Include="Models\helpers\UserdataChangeModel.cs" />
     <Compile Include="Models\Interfaces\IFinalizationRepository.cs" />
     <Compile Include="Models\Interfaces\IFunctionalSpecificationRepository.cs" />
     <Compile Include="Models\Interfaces\IInvitationRepository.cs" />
+    <Compile Include="Models\Interfaces\IMiscellaneousRepository.cs" />
     <Compile Include="Models\Interfaces\IPreliminaryStudyRepository.cs" />
     <Compile Include="Models\Interfaces\IRequirementSpecificationRepository.cs" />
     <Compile Include="Models\Interfaces\IUserProjectRel.cs" />
@@ -316,6 +320,7 @@
     <Compile Include="Models\Repositories\FinalizationRepository.cs" />
     <Compile Include="Models\Repositories\FunctionalSpecificationRepository.cs" />
     <Compile Include="Models\Repositories\InvitationRepository.cs" />
+    <Compile Include="Models\Repositories\MiscellaneousRepository.cs" />
     <Compile Include="Models\Repositories\PreliminaryStudyRepository.cs" />
     <Compile Include="Models\Repositories\ProjectRepository.cs" />
     <Compile Include="Models\Repositories\RequirementSpecificationRepository.cs" />
@@ -348,7 +353,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\presentations\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

@@ -34,21 +34,37 @@ namespace Web_Api___Pdmsys.Controllers
 
         public IQueryable GetUserProjects()
         {
-            return _userprojectrel.GetUsersProjects();
+            try {
+                return _userprojectrel.GetUsersProjects();
+            } catch(Exception e)
+            {
+                return null;
+            }
         }
 
         [HttpGet]
         [Route("rights/{projectId}")]
         public IHttpActionResult GetProjectrights(int projectId)
         {
+            int rights = _userprojectrel.GetProjectRightsByProjectId(projectId);
+            if (rights == -1)
+                return Unauthorized();
             return Ok(_userprojectrel.GetProjectRightsByProjectId(projectId));
         }
 
         [HttpGet]
         [Route("getProjectName/{projectId}")]
         public IHttpActionResult GetProjectName(int projectId)
-        {
-            return Ok(new { name = _repo.GetProjectName(projectId) }); 
+        {        
+            try
+            {
+                return Ok(new { name = _repo.GetProjectName(projectId) });
+            }
+
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
         }
 
         [HttpGet]
@@ -95,22 +111,6 @@ namespace Web_Api___Pdmsys.Controllers
 
 
             return Ok();
-        }
-
-        // DELETE: api/Project/5
-        [ResponseType(typeof(Projects))]
-        public async Task<IHttpActionResult> DeleteProjects(int id)
-        {
-            Projects projects = await db.Projects.FindAsync(id);
-            if (projects == null)
-            {
-                return NotFound();
-            }
-
-            db.Projects.Remove(projects);
-            await db.SaveChangesAsync();
-
-            return Ok(projects);
         }
 
         protected override void Dispose(bool disposing)

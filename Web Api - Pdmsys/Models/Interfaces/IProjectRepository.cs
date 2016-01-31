@@ -10,7 +10,7 @@ namespace Web_Api___Pdmsys.Models.Repositories
 {
     public interface IProjectRepository
     {
-        IQueryable<Projects> GetUserProjects();
+        IQueryable GetUserProjects();
         String GetProjectName(int id);
         void Add(Projects item);
         bool AddMemberToProject(MemberModel member);

@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -26,6 +27,29 @@ namespace Web_Api___Pdmsys.Models.Repositories
             context = new PdmsysContext();
             db = new pdmsysEntities();
             _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
+        }
+
+        public void ChangeUserData(UserdataChangeModel model, IdentityUser user)
+        {
+            String hashedNewPassword = _userManager.PasswordHasher.HashPassword(model.password);
+            UserStore<IdentityUser> store = new UserStore<IdentityUser>(context);
+            store.SetPasswordHashAsync(user, hashedNewPassword);
+            store.UpdateAsync(user);
+
+            UserInfos info = (from m in db.UserInfos
+                             where m.User_FK == user.Id
+                             select m).First<UserInfos>();
+
+            if (model.firstname != null)
+                info.firstname = model.firstname;
+
+            if (model.lastname != null)
+                info.lastname = model.lastname;
+
+            db.Entry(info).State = EntityState.Modified;
+
+            db.SaveChanges();
+
         }
 
         public async Task<IdentityUser> Find()
@@ -53,6 +77,14 @@ namespace Web_Api___Pdmsys.Models.Repositories
                             email = user.UserName
                         };
             return query.ToList();
+        }
+
+        public UserInfos FindUserinfos(string userid)
+        {
+            var query = from m in db.UserInfos
+                        where m.User_FK == userid
+                        select m;
+            return query.First();
         }
     }
 }

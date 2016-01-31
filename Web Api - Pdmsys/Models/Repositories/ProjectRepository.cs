@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using Web_Api___Pdmsys.Models.data;
@@ -11,7 +13,18 @@ namespace Web_Api___Pdmsys.Models.Repositories
 {
     public class ProjectRepository : IProjectRepository
     {
-        private pdmsysEntities db = new pdmsysEntities();
+        private PdmsysContext context;
+
+        private pdmsysEntities db;
+
+        private UserManager<IdentityUser> _userManager;
+
+        public ProjectRepository()
+        {
+            context = new PdmsysContext();
+            db = new pdmsysEntities();
+            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
+        }
 
         public void Add(Projects item)
         {
@@ -41,9 +54,21 @@ namespace Web_Api___Pdmsys.Models.Repositories
             return query.AsQueryable().First().name;
         }
 
-        public IQueryable<Projects> GetUserProjects()
+        public IQueryable GetUserProjects()
         {
-            return db.Projects;
+            IdentityUser user = _userManager.FindByName(ClaimsPrincipal.Current.Claims.ToList().First().Value);
+            var query = (from m in db.User_Project_Rel
+                        join p in db.Projects on m.Project_FK equals p.Id
+                        where m.User_FK == user.Id
+                        select new
+                        {
+                            id = p.Id,
+                            name = p.name,
+                            description = p.description,
+                            acronym = p.acronym
+                        }).AsQueryable();
+            return query;
+
         }
 
         public void RemoveProjectMember(string email)
