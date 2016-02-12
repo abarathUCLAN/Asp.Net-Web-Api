@@ -16,6 +16,10 @@ namespace Web_Api___Pdmsys.Models.Repositories
         bool AddMemberToProject(MemberModel member);
         IQueryable<MemberModel> GetProjectMembers();
         void RemoveProjectMember(String email);
-
+        bool findProjectByName(string name);
+        int getFinalizationPercent(int projectId);
+        int getPreliminaryStudyPercent(int projectId);
+        int getRequirementSpecificationPercent(int projectId);
+        int getFunctionalSpecificationPercent(int projectId);
     }
 }

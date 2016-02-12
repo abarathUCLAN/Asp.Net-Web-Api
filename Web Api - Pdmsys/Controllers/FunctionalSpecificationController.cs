@@ -31,6 +31,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectImplementation/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectImplementation(project_implementations model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -52,6 +53,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectImplementation/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectImplementation(int projectId)
         {
             var delete = from des in db.project_implementations
@@ -76,6 +78,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("functionalRequirement/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectfunctionalRequirement(project_functional_requirements model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -91,6 +94,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("functionalRequirement/delete/{projectId}/{functionalRequirementId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectfunctionalRequirement(int projectId, int functionalRequirementId)
         {
             var delete = from des in db.project_functional_requirements

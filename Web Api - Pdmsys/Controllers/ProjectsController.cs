@@ -34,12 +34,40 @@ namespace Web_Api___Pdmsys.Controllers
 
         public IQueryable GetUserProjects()
         {
-            try {
+            try
+            {
                 return _userprojectrel.GetUsersProjects();
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 return null;
             }
+        }
+
+        [HttpPost]
+        public async Task<IHttpActionResult> CreateProject(Projects project)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if (_repo.findProjectByName(project.name))
+                return BadRequest();
+
+            db.Projects.Add(project);
+            await db.SaveChangesAsync();
+
+            User_Project_Rel rel = new User_Project_Rel();
+            rel.Project_FK = project.Id;
+            IdentityUser user = await _userrepo.Find();
+            rel.User_FK = user.Id;
+            rel.type = 2;
+            db.User_Project_Rel.Add(rel);
+
+            await db.SaveChangesAsync();
+
+            return Ok(project.Id);
         }
 
         [HttpGet]
@@ -54,8 +82,9 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpGet]
         [Route("getProjectName/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public IHttpActionResult GetProjectName(int projectId)
-        {        
+        {
             try
             {
                 return Ok(new { name = _repo.GetProjectName(projectId) });
@@ -69,13 +98,41 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpGet]
         [Route("getProjectMembers/{projectId}")]
+        [AdminTypeActionFilter]
         public IQueryable GetProjectMembers(int projectId)
         {
             return _userprojectrel.GetProjectMembersByProjectId(projectId);
         }
 
+        [HttpGet]
+        [Route("dashboard/{projectId}")]
+        [MemberAndSpectatorActionFilter]
+        public IHttpActionResult GetDashboardData(int projectId)
+        {
+            int finalizationPercent = calculatePercent(_repo.getFinalizationPercent(projectId), 3);
+            int preliminaryStudyPercent = calculatePercent(_repo.getPreliminaryStudyPercent(projectId), 10);
+            int requirementSpecificationPercent = calculatePercent(_repo.getRequirementSpecificationPercent(projectId), 2);
+            int functionalSpecificationPercent = calculatePercent(_repo.getFunctionalSpecificationPercent(projectId), 3);
+            return Ok(new
+            {
+                finalization = finalizationPercent,
+                preliminaryStudy = preliminaryStudyPercent,
+                requirementSpecification = requirementSpecificationPercent,
+                functionalSpecification = functionalSpecificationPercent
+            });
+        }
+
+        private int calculatePercent(int v, int max)
+        {
+            if (v == 0)
+                return 0;
+            float result = (100 / max) * v;
+            return (int) result;
+        }
+
         [HttpPost]
         [Route("addMemberToProject/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> AddMemberToProject(AddMemberModel model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -93,13 +150,14 @@ namespace Web_Api___Pdmsys.Controllers
             await db.SaveChangesAsync();
 
             List<Object> array = new List<object>();
-            array.Add(new { id =user.Id });
+            array.Add(new { id = user.Id });
             return Ok(array);
-            
+
         }
 
         [HttpPost]
         [Route("removeProjectMember/{projectId}")]
+        [AdminTypeActionFilter]
         public IHttpActionResult PostProjects(EmailSearchModel email, int projectId)
         {
             if (!ModelState.IsValid)

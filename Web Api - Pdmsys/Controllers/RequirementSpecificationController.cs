@@ -30,6 +30,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectResult/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectResult(project_results model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -51,6 +52,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectResult/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectResult(int projectId)
         {
             var delete = from des in db.project_results
@@ -78,6 +80,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectIntroduction/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectIntroduction(project_introductions model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -99,6 +102,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectIntroduction/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectIntroduction(int projectId)
         {
             var delete = from des in db.project_introductions
@@ -126,6 +130,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectUse/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectUse(project_uses model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -147,6 +152,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectUse/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectUse(int projectId)
         {
             var delete = from des in db.project_uses
@@ -174,6 +180,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("productData/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostproductData(project_data model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -195,6 +202,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("productData/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteproductData(int projectId)
         {
             var delete = from des in db.project_data
@@ -222,6 +230,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectQuality/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectQuality(project_qualities model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -243,6 +252,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectQuality/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectQuality(int projectId)
         {
             var delete = from des in db.project_qualities
@@ -267,6 +277,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("needToHave/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectneedToHave(project_need_to_haves model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -282,6 +293,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("needToHave/delete/{projectId}/{needToHaveId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectneedToHave(int projectId, int needToHaveId)
         {
             var delete = from des in db.project_need_to_haves
@@ -306,6 +318,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("niceToHave/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectniceToHave(project_nice_to_haves model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -321,6 +334,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("niceToHave/delete/{projectId}/{needToHaveId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectniceToHave(int projectId, int needToHaveId)
         {
             var delete = from des in db.project_nice_to_haves
@@ -348,6 +362,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("actualState/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostactualState(project_actual_states model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -369,6 +384,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("actualState/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteactualState(int projectId)
         {
             var delete = from des in db.project_actual_states
@@ -396,6 +412,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("targetState/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PosttargetState(project_target_states model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -417,6 +434,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("targetState/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeletetargetState(int projectId)
         {
             var delete = from des in db.project_target_states
@@ -441,6 +459,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("nonFunctionalRequirement/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectnonFunctionalRequirement(project_non_functional_requirements model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -456,6 +475,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("nonFunctionalRequirement/delete/{projectId}/{nonFunctionalRequirementId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectnonFunctionalRequirement(int projectId, int nonFunctionalRequirementId)
         {
             var delete = from des in db.project_non_functional_requirements

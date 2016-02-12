@@ -46,6 +46,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("presentation/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectpresentation( int projectId)
         {
             var httpRequest = HttpContext.Current.Request;
@@ -74,6 +75,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("presentation/delete/{projectId}/{presentationId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectpresentation(int projectId, int presentationId)
         {
             var delete = from des in db.project_presentations
@@ -102,6 +104,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("changeRequest/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectchangeRequest(project_change_requests model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -117,6 +120,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("changeRequest/delete/{projectId}/{changeRequestId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectchangeRequest(int projectId, int changeRequestId)
         {
             var delete = from des in db.project_change_requests
@@ -141,6 +145,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("styleGuide/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectstyleGuide(project_style_guides model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -156,6 +161,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("styleGuide/delete/{projectId}/{styleGuideId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectstyleGuide(int projectId, int styleGuideId)
         {
             var delete = from des in db.project_style_guides
@@ -180,6 +186,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("report/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectreport(project_reports model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -195,6 +202,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("report/delete/{projectId}/{reportId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectreports(int projectId, int reportId)
         {
             var delete = from des in db.project_reports

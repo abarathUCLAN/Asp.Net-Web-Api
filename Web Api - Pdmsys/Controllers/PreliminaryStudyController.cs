@@ -32,6 +32,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectDescription/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectDescription(project_descriptions model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -53,6 +54,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectDescription/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectDescription(int projectId)
         {
             var delete = from des in db.project_descriptions
@@ -77,6 +79,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("risk/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectRisk(project_risks model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -92,6 +95,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("risk/delete/{projectId}/{riskId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectRisk(int projectId, int riskId)
         {
             var delete = from des in db.project_risks
@@ -120,6 +124,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("effortEstimation/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectEffortEstimation([FromBody] object content, int projectId)
         {
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(content);
@@ -142,6 +147,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("effortEstimation/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteProjectEffortEstimation(int projectId)
         {
             var delete = from des in db.project_effort_estimations
@@ -156,7 +162,5 @@ namespace Web_Api___Pdmsys.Controllers
 
             return Ok();
         }
-
-
     }
 }

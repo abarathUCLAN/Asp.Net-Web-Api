@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -40,6 +41,7 @@ namespace Web_Api___Pdmsys.Controllers
                 else {
                     invitation.Project_FK = projectId;
                     invitation.urlcode = RandomString(20);
+                    sendMail(invitation);
                     db.invitations.Add(invitation);
                 }
             }
@@ -49,6 +51,7 @@ namespace Web_Api___Pdmsys.Controllers
         }
 
         [Route("addInvitationToProject/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> AddInvitationToProject(invitations invitations, int projectId)
         {
             if (!ModelState.IsValid)
@@ -60,11 +63,14 @@ namespace Web_Api___Pdmsys.Controllers
             db.invitations.Add(invitations);
             await db.SaveChangesAsync();
 
+            sendMail(invitations);
+
             return Ok(invitations);
         }
 
         [HttpPost]
         [Route("deleteInvitation/{projectId}")]
+        [AdminTypeActionFilter]
         public IHttpActionResult RemoveInvitationByEmail(EmailSearchModel model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -74,8 +80,30 @@ namespace Web_Api___Pdmsys.Controllers
 
             _repo.RemoveInvitationByEmail(model.email);
 
-
             return Ok();
+        }
+
+        private void sendMail(invitations inv)
+        {
+            MailMessage mailMessage = new MailMessage("support@pdmsys.com", "barath1058@gmail.com");
+
+            mailMessage.Subject = "Yout got invited to Pdmsys! Check it out!";
+            mailMessage.Body = "<body> Hello " + inv.firstname + " " + inv.lastname + "," +
+                "<br> You have been invited to a project on Pdmsys, register yourself <a href = 'http://localhost:8080/pdmsys/#/invitation/'"+ inv.urlcode +">" +
+            "here </a> and check your project out. If the link is not working, please copy http://localhost:8080/pdmsys/#/invitation/"+ inv.urlcode+" manually into your browser." +
+            "<br>Kind Regards<br>Pdmsys - Admin</body>";
+
+            mailMessage.IsBodyHtml = true;
+
+            SmtpClient smtpClient = new SmtpClient("smtp.mailgun.com", 587);
+
+            smtpClient.Credentials = new System.Net.NetworkCredential()
+            {
+                UserName = "yolo@sandbox08f1c44dd2074ddf94fc8c06d253f59d.mailgun.org",
+                Password = "12345"
+            };
+
+            smtpClient.Send(mailMessage);
         }
 
         public static string RandomString(int length)

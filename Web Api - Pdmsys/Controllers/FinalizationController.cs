@@ -27,6 +27,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("protocol/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostProjectprotocol(project_acceptance_protocols model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -44,6 +45,7 @@ namespace Web_Api___Pdmsys.Controllers
         }
 
         [HttpPost]
+        [AdminTypeActionFilter]
         [Route("protocol/delete/{projectId}/{protocolId}")]
         public async Task<IHttpActionResult> DeleteProjectprotocol(int projectId, int protocolId)
         {
@@ -72,6 +74,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectManual/{projectId}")]
+        [MemberAndSpectatorActionFilter]
         public async Task<IHttpActionResult> PostprojectManual(project_manuals model, int projectId)
         {
             if (!ModelState.IsValid)
@@ -93,6 +96,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("projectManual/delete/{projectId}")]
+        [AdminTypeActionFilter]
         public async Task<IHttpActionResult> DeleteprojectManual(int projectId)
         {
             var delete = from des in db.project_manuals

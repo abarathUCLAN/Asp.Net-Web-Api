@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using RestSharp;
+using RestSharp.Authenticators;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,8 +9,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Typesafe.Mailgun;
 using Web_Api___Pdmsys.Models;
 using Web_Api___Pdmsys.Models.data;
 using Web_Api___Pdmsys.Models.helpers;
@@ -20,13 +24,13 @@ namespace Web_Api___Pdmsys.Controllers
     [RoutePrefix("api/users")]
     public class UserController : ApiController
     {
-        private AuthRepository _repo = null;
+        private AuthRepository _repo = new AuthRepository();
         pdmsysEntities db = new pdmsysEntities();
         static readonly IUserRepository _userrepo = new UserRepository();
+        static readonly IInvitationRepository _invrepo = new InvitationRepository();
 
         public UserController()
         {
-            _repo = new AuthRepository();
         }
 
         [HttpGet]
@@ -65,7 +69,7 @@ namespace Web_Api___Pdmsys.Controllers
             await db.SaveChangesAsync();
             db.UserInfos.Add(info);
             await db.SaveChangesAsync();
-
+            
             return Ok();
         }
 
@@ -98,6 +102,7 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("getUserByEmail")]
+        [AdminTypeActionFilter]
         public IHttpActionResult GetUserByEmail(EmailSearchModel email)
         {
             if (!ModelState.IsValid)
@@ -114,6 +119,42 @@ namespace Web_Api___Pdmsys.Controllers
                 return Ok(array);
             }
              return BadRequest();
+
+        }
+
+        [HttpPost]
+        [Route("checkIfUrlCodeIsValid")]
+        [AllowAnonymous]
+        public IHttpActionResult CheckIfUrlCodeIsValid(UrlCodeModel code)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (!_invrepo.checkIfUrlCodeIsValid(code.urlcode))
+                return BadRequest();
+
+            return Ok();
+
+        }
+
+        [HttpPost]
+        [Route("registerUserWithUrlCode")]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> RegisterUserWithUrlCode(UrlCodeModel code)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IdentityUser user = await _invrepo.registerUserWithUrlCode(code);
+
+            if (user.Id == null)
+                return BadRequest();
+
+            return Ok();
 
         }
 

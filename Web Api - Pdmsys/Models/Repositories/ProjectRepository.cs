@@ -28,7 +28,7 @@ namespace Web_Api___Pdmsys.Models.Repositories
 
         public void Add(Projects item)
         {
-            
+
             db.Projects.Add(item);
             db.SaveChangesAsync();
         }
@@ -36,6 +36,105 @@ namespace Web_Api___Pdmsys.Models.Repositories
         public bool AddMemberToProject(MemberModel member)
         {
             throw new NotImplementedException();
+        }
+
+        public bool findProjectByName(string name)
+        {
+            var query = from result in db.Projects
+                        where result.name == name
+                        select result;
+
+            if (query.Count() == 0)
+                return false;
+            return true;
+        }
+
+        public int getFinalizationPercent(int projectId)
+        {
+            int count = 0;
+            db.project_acceptance_protocols.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count = 1;
+                        return;
+                    }
+                });
+
+            db.project_manuals.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            return count;
+        }
+
+        public int getFunctionalSpecificationPercent(int projectId)
+        {
+            int count = 0;
+            db.project_functional_requirements.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count = 1;
+                        return;
+                    }
+                });
+
+            db.project_implementations.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            return count;
+        }
+
+        public int getPreliminaryStudyPercent(int projectId)
+        {
+            int count = 0;
+            db.project_risks.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count = 1;
+                        return;
+                    }
+                });
+
+            db.project_descriptions.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            db.project_effort_estimations.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            return count;
         }
 
         public IQueryable<MemberModel> GetProjectMembers()
@@ -54,19 +153,127 @@ namespace Web_Api___Pdmsys.Models.Repositories
             return query.AsQueryable().First().name;
         }
 
+        public int getRequirementSpecificationPercent(int projectId)
+        {
+            int count = 0;
+
+            db.project_introductions.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            db.project_results.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            db.project_uses.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            db.project_actual_states.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            db.project_target_states.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            db.project_data.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            db.project_qualities.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+
+            db.project_nice_to_haves.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            db.project_need_to_haves.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            db.project_non_functional_requirements.AsParallel().ForAll(
+                p =>
+                {
+                    if (p.Project_FK == projectId)
+                    {
+                        count++;
+                        return;
+                    }
+                });
+
+            return count;
+        }
+
         public IQueryable GetUserProjects()
         {
             IdentityUser user = _userManager.FindByName(ClaimsPrincipal.Current.Claims.ToList().First().Value);
             var query = (from m in db.User_Project_Rel
-                        join p in db.Projects on m.Project_FK equals p.Id
-                        where m.User_FK == user.Id
-                        select new
-                        {
-                            id = p.Id,
-                            name = p.name,
-                            description = p.description,
-                            acronym = p.acronym
-                        }).AsQueryable();
+                         join p in db.Projects on m.Project_FK equals p.Id
+                         where m.User_FK == user.Id
+                         select new
+                         {
+                             id = p.Id,
+                             name = p.name,
+                             description = p.description,
+                             acronym = p.acronym
+                         }).AsQueryable();
             return query;
 
         }
