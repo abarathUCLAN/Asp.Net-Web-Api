@@ -11,5 +11,6 @@ namespace Web_Api___Pdmsys.Models.Interfaces
         IQueryable GetProjectpresentations(int projectId);
         IQueryable GetProjectchangeRequests(int projectId);
         IQueryable GetProjectreports(int projectId);
+        IQueryable GetProjectstyleguides(int projectId);
     }
 }

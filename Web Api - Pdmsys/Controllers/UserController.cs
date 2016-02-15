@@ -161,7 +161,7 @@ namespace Web_Api___Pdmsys.Controllers
 
             IdentityUser user = await _invrepo.registerUserWithUrlCode(code);
 
-            if (user.Id == null)
+            if (user == null)
                 return BadRequest();
 
             return Ok();

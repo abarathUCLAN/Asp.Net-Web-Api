@@ -140,7 +140,7 @@ namespace Web_Api___Pdmsys.Controllers
         [Route("styleGuide/{projectId}")]
         public IQueryable GetProjectstyleGuides(int projectId)
         {
-            return _repo.GetProjectreports(projectId);
+            return _repo.GetProjectstyleguides(projectId);
         }
 
         [HttpPost]

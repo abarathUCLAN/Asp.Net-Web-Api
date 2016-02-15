@@ -10,7 +10,6 @@ namespace Web_Api___Pdmsys.Models.helpers
     {
         [Required]
         public string urlcode { get; set; }
-        [Required]
         public string password { get; set; }
     }
 }

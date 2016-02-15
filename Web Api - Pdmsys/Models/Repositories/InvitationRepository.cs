@@ -73,7 +73,7 @@ namespace Web_Api___Pdmsys.Models.Repositories
 
             IdentityUser result = await _repo.RegisterUser(user);
 
-            if (result.Id == null)
+            if (result == null)
                 return null;
 
             UserInfos infos = new UserInfos();
