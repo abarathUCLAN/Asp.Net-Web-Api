@@ -13,9 +13,13 @@ namespace Web_Api___Pdmsys.Models.helpers
         public string email { get; set; }
 
         [Required]
+        [MaxLength(25)]
+        [MinLength(2)]
         public string Firstname { get; set; }
 
         [Required]
+        [MaxLength(25)]
+        [MinLength(2)]
         public string Lastname { get; set; }
 
         [Required]

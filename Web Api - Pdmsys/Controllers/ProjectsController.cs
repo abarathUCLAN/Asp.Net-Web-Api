@@ -110,8 +110,8 @@ namespace Web_Api___Pdmsys.Controllers
         public IHttpActionResult GetDashboardData(int projectId)
         {
             int finalizationPercent = calculatePercent(_repo.getFinalizationPercent(projectId), 3);
-            int preliminaryStudyPercent = calculatePercent(_repo.getPreliminaryStudyPercent(projectId), 10);
-            int requirementSpecificationPercent = calculatePercent(_repo.getRequirementSpecificationPercent(projectId), 2);
+            int preliminaryStudyPercent = calculatePercent(_repo.getPreliminaryStudyPercent(projectId), 3);
+            int requirementSpecificationPercent = calculatePercent(_repo.getRequirementSpecificationPercent(projectId), 10);
             int functionalSpecificationPercent = calculatePercent(_repo.getFunctionalSpecificationPercent(projectId), 3);
             return Ok(new
             {

@@ -35,6 +35,9 @@ namespace Web_Api___Pdmsys
            
             var result = await _userManager.CreateAsync(user, userModel.Password);
 
+            if (result.Succeeded == false)
+                return null;
+
             return user;
         }
 

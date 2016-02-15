@@ -18,7 +18,7 @@ namespace Web_Api___Pdmsys.Controllers
             object projectid;
             actionContext.ActionArguments.TryGetValue("projectId", out projectid);
             int result = new UserProjectRel().GetProjectRightsByProjectId(Convert.ToInt32(projectid));
-            if (result < 1)
+            if (result < 0)
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
     }

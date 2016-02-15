@@ -14,13 +14,18 @@ namespace Web_Api___Pdmsys.Models
         public string email { get; set; }
 
         [Required]
+        [MaxLength(25)]
+        [MinLength(2)]
         public string Firstname { get; set; }
 
         [Required]
+        [MaxLength(25)]
+        [MinLength(2)]
         public string Lastname { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [MaxLength(100)]
+        [MinLength(6)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

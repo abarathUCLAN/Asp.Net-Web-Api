@@ -10,6 +10,7 @@ using System.Web.Http;
 using Web_Api___Pdmsys.Providers;
 
 [assembly: OwinStartup(typeof(Web_Api___Pdmsys.Startup))]
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace Web_Api___Pdmsys
 {
     public class Startup

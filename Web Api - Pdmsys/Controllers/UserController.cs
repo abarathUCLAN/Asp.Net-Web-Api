@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using log4net;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -28,6 +29,7 @@ namespace Web_Api___Pdmsys.Controllers
         pdmsysEntities db = new pdmsysEntities();
         static readonly IUserRepository _userrepo = new UserRepository();
         static readonly IInvitationRepository _invrepo = new InvitationRepository();
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public UserController()
         {
@@ -54,13 +56,17 @@ namespace Web_Api___Pdmsys.Controllers
         {
             if (!ModelState.IsValid)
             {
+                Log.Debug("Register failed with username: " + userModel.email);
                 return BadRequest(ModelState);
             }
 
             IdentityUser result = await _repo.RegisterUser(userModel);
 
-            if (result.Id == null)
+            if (result == null)
+            {
+                Log.Debug("User:  " + userModel.email + " already registered.");
                 return BadRequest();
+            }
 
             UserInfos info = new UserInfos();
             info.firstname = userModel.Firstname;
@@ -69,7 +75,9 @@ namespace Web_Api___Pdmsys.Controllers
             await db.SaveChangesAsync();
             db.UserInfos.Add(info);
             await db.SaveChangesAsync();
-            
+
+            Log.Debug("Register successful with username: " + userModel.email);
+
             return Ok();
         }
 
@@ -79,6 +87,7 @@ namespace Web_Api___Pdmsys.Controllers
         {
             if (!ModelState.IsValid)
             {
+                Log.Debug("Change user data failed.");
                 return BadRequest(ModelState);
             }
 
@@ -88,6 +97,8 @@ namespace Web_Api___Pdmsys.Controllers
 
 
             _userrepo.ChangeUserData(model, user);
+
+            Log.Debug("Successfully changed user data for: " + user.UserName);
 
             return Ok();
         }
@@ -102,7 +113,6 @@ namespace Web_Api___Pdmsys.Controllers
 
         [HttpPost]
         [Route("getUserByEmail")]
-        [AdminTypeActionFilter]
         public IHttpActionResult GetUserByEmail(EmailSearchModel email)
         {
             if (!ModelState.IsValid)

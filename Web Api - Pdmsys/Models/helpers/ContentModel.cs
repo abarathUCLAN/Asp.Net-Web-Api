@@ -9,6 +9,7 @@ namespace Web_Api___Pdmsys.Models.helpers
     public class ContentModel
     {
         [Required]
+        [MinLength(5)]
         public string content { get; set; }
     }
 }

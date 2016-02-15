@@ -52,15 +52,12 @@ namespace Web_Api___Pdmsys.Models.Repositories
         public int getFinalizationPercent(int projectId)
         {
             int count = 0;
-            db.project_acceptance_protocols.AsParallel().ForAll(
-                p =>
-                {
-                    if (p.Project_FK == projectId)
-                    {
-                        count = 1;
-                        return;
-                    }
-                });
+            var acceptanceProtocolQuery = from model in db.project_acceptance_protocols
+                                          where model.Project_FK == projectId
+                                          select model;
+
+            if (acceptanceProtocolQuery.Count() > 0)
+                count++;           
 
             db.project_manuals.AsParallel().ForAll(
                 p =>
@@ -227,36 +224,26 @@ namespace Web_Api___Pdmsys.Models.Repositories
                     }
                 });
 
+            var niceToHaveQuery = from model in db.project_nice_to_haves
+                                   where model.Project_FK == projectId
+                                   select model;
 
-            db.project_nice_to_haves.AsParallel().ForAll(
-                p =>
-                {
-                    if (p.Project_FK == projectId)
-                    {
-                        count++;
-                        return;
-                    }
-                });
+            if (niceToHaveQuery.Count() > 0)
+                count++;
 
-            db.project_need_to_haves.AsParallel().ForAll(
-                p =>
-                {
-                    if (p.Project_FK == projectId)
-                    {
-                        count++;
-                        return;
-                    }
-                });
+            var needToHaveQuery = from model in db.project_need_to_haves
+                                  where model.Project_FK == projectId
+                                  select model;
 
-            db.project_non_functional_requirements.AsParallel().ForAll(
-                p =>
-                {
-                    if (p.Project_FK == projectId)
-                    {
-                        count++;
-                        return;
-                    }
-                });
+            if (needToHaveQuery.Count() > 0)
+                count++;
+
+            var nonFunctionalQuery = from model in db.project_non_functional_requirements
+                                  where model.Project_FK == projectId
+                                  select model;
+
+            if (nonFunctionalQuery.Count() > 0)
+                count++;
 
             return count;
         }

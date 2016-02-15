@@ -14,6 +14,7 @@ namespace Web_Api___Pdmsys
         {
             // Web API routes
             config.EnableCors();
+            log4net.Config.XmlConfigurator.Configure();
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
